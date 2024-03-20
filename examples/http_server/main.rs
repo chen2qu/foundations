@@ -54,6 +54,8 @@ async fn main() -> BootstrapResult<()> {
         log::info!("Telemetry server is listening on http://{}", tele_serv_addr);
     }
 
+    log::info!("All settings read back is: {:#?}", &cli.settings.telemetry);
+
     // Spawn TCP listeners for each endpoint. Note that `Map<EndpointsSettings>` is ordered, so
     // we can just return a `Vec<TcpListener>` from `spawn_tcp_listeners` and correspond returned
     // listener to the settings just by index.

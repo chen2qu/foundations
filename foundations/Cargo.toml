@@ -66,6 +66,7 @@ settings = [
     "dep:serde",
     "dep:yaml-merge-keys",
     "dep:indexmap",
+    "dep:toml",
 ]
 
 # Enables all the telemetry-related features ("logging", "metrics", "tracing", "telemetry-server").
@@ -191,6 +192,7 @@ tikv-jemallocator = { workspace = true, optional = true, features = [
 yaml-merge-keys = { workspace = true, optional = true, features = [
     "serde_yaml",
 ] }
+toml = { workspace = true, optional = true }
 
 # needed for minver purposes
 local-ip-address = { workspace = true, optional = true }

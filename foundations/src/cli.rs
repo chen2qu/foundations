@@ -120,13 +120,15 @@ fn get_settings<S: Settings>(arg_matches: &ArgMatches) -> BootstrapResult<S> {
     if let Some(path) = arg_matches.get_one::<String>(GENERATE_CONFIG_OPT_ID) {
         let settings = S::default();
 
-        crate::settings::to_yaml_file(&settings, path)?;
+        // crate::settings::to_yaml_file(&settings, path)?;
+        crate::settings::to_toml_file(&settings, path)?;
 
         return Ok(settings);
     }
 
     if let Some(path) = arg_matches.get_one::<String>(USE_CONFIG_OPT_ID) {
-        return crate::settings::from_file(path).map_err(|e| anyhow!(e));
+        // return crate::settings::from_file(path).map_err(|e| anyhow!(e));
+        return crate::settings::from_toml_file(path).map_err(|e| anyhow!(e));
     }
 
     unreachable!("clap should require config options to be present")

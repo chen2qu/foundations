@@ -485,3 +485,19 @@ pub fn from_file<T: Settings>(path: impl AsRef<Path>) -> BootstrapResult<T> {
 
     from_yaml_str(data)
 }
+
+/// Parse settings from TOML file.
+///
+pub fn from_toml_file<T: Settings>(path: impl AsRef<Path>) -> BootstrapResult<T> {
+    let data = std::fs::read_to_string(path)?;
+
+    Ok(toml::from_str::<T>(&data).unwrap())
+}
+
+/// Write the TOML representation of the documented settings to file.
+pub fn to_toml_file(settings: &impl Settings, path: impl AsRef<Path>) -> BootstrapResult<()> {
+    Ok(io::Write::write_all(
+        &mut File::create(path)?,
+        toml::to_string(&settings).unwrap().as_bytes(),
+    )?)
+}
