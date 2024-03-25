@@ -9,7 +9,8 @@ resolver = "2"
 
 [workspace.package]
 version = "3.2.2"
-repository = "https://github.com/cloudflare/foundations"
+# Remove the repository definition so that it doesn't get the latest version at build
+# repository = "https://github.com/cloudflare/foundations"
 edition = "2021"
 authors = ["Cloudflare"]
 license = "BSD-3-Clause"
